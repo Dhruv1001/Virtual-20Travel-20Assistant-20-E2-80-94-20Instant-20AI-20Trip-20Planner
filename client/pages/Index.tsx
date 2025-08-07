@@ -220,9 +220,11 @@ export default function Index() {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg" className="bg-gradient-to-r from-travel-ocean to-travel-sunset hover:from-travel-ocean/90 hover:to-travel-sunset/90">
-              Start Planning Now
-              <ArrowRight className="h-5 w-5 ml-2" />
+            <Button size="lg" className="bg-gradient-to-r from-travel-ocean to-travel-sunset hover:from-travel-ocean/90 hover:to-travel-sunset/90" asChild>
+              <Link to="/plan-trip">
+                Start Planning Now
+                <ArrowRight className="h-5 w-5 ml-2" />
+              </Link>
             </Button>
           </div>
         </div>
