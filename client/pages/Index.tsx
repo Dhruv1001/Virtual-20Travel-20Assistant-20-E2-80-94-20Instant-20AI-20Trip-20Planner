@@ -124,10 +124,12 @@ export default function Index() {
                   className="h-12 text-lg border-travel-ocean/20 focus:border-travel-ocean"
                 />
               </div>
-              <Button className="h-12 px-8 bg-gradient-to-r from-travel-ocean to-travel-sunset hover:from-travel-ocean/90 hover:to-travel-sunset/90">
-                <Route className="h-5 w-5 mr-2" />
-                Plan My Trip
-                <ArrowRight className="h-5 w-5 ml-2" />
+              <Button className="h-12 px-8 bg-gradient-to-r from-travel-ocean to-travel-sunset hover:from-travel-ocean/90 hover:to-travel-sunset/90" asChild>
+                <Link to="/plan-trip">
+                  <Route className="h-5 w-5 mr-2" />
+                  Plan My Trip
+                  <ArrowRight className="h-5 w-5 ml-2" />
+                </Link>
               </Button>
             </div>
             <div className="flex flex-wrap gap-2 mt-4">
