@@ -72,11 +72,17 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 199 89% 48%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
+
+    --travel-ocean: 199 89% 48%;
+    --travel-sunset: 24 95% 53%;
+    --travel-forest: 142 76% 36%;
+    --travel-sand: 43 74% 66%;
+    --travel-sky: 199 89% 75%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
