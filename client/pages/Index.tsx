@@ -19,6 +19,7 @@ import {
   Route
 } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Index() {
   const [destination, setDestination] = useState("");
