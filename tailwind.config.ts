@@ -27,6 +27,13 @@ export default {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        travel: {
+          ocean: "hsl(var(--travel-ocean))",
+          sunset: "hsl(var(--travel-sunset))",
+          forest: "hsl(var(--travel-forest))",
+          sand: "hsl(var(--travel-sand))",
+          sky: "hsl(var(--travel-sky))",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
