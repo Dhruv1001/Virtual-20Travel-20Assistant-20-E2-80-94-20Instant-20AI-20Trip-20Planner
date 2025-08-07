@@ -248,8 +248,10 @@ export default function Index() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="h-12 bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-white"
               />
-              <Button variant="secondary" className="h-12 px-8 bg-white text-travel-ocean hover:bg-white/90">
-                Get Started
+              <Button variant="secondary" className="h-12 px-8 bg-white text-travel-ocean hover:bg-white/90" asChild>
+                <Link to="/plan-trip">
+                  Get Started
+                </Link>
               </Button>
             </div>
             
