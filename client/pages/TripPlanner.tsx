@@ -1,14 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
 import { Textarea } from "@/components/ui/textarea";
-import { 
-  MapPin, 
-  Calendar, 
-  Users, 
+import {
+  MapPin,
+  Calendar,
+  Users,
   DollarSign,
   UtensilsCrossed,
   Mountain,
@@ -22,7 +28,7 @@ import {
   Check,
   Compass,
   Download,
-  Sparkles
+  Sparkles,
 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -52,7 +58,7 @@ export default function TripPlanner() {
     accommodation: "",
     transportation: "",
     activities: [],
-    specialRequests: ""
+    specialRequests: "",
   });
 
   const totalSteps = 5;
@@ -62,42 +68,88 @@ export default function TripPlanner() {
     { number: 2, title: "Dates", description: "When?" },
     { number: 3, title: "Preferences", description: "What you love" },
     { number: 4, title: "Details", description: "Trip specifics" },
-    { number: 5, title: "Review", description: "Final check" }
+    { number: 5, title: "Review", description: "Final check" },
   ];
 
   const preferences = [
-    { id: "cuisine", label: "Local Cuisine", icon: <UtensilsCrossed className="h-5 w-5" />, color: "bg-travel-sunset" },
-    { id: "nature", label: "Nature & Parks", icon: <Mountain className="h-5 w-5" />, color: "bg-travel-forest" },
-    { id: "history", label: "History & Culture", icon: <Camera className="h-5 w-5" />, color: "bg-travel-sand" },
-    { id: "adventure", label: "Adventure Sports", icon: <Plane className="h-5 w-5" />, color: "bg-travel-ocean" },
-    { id: "relaxation", label: "Relaxation", icon: <Hotel className="h-5 w-5" />, color: "bg-travel-sky" },
-    { id: "nightlife", label: "Nightlife", icon: <Sparkles className="h-5 w-5" />, color: "bg-travel-sunset" }
+    {
+      id: "cuisine",
+      label: "Local Cuisine",
+      icon: <UtensilsCrossed className="h-5 w-5" />,
+      color: "bg-travel-sunset",
+    },
+    {
+      id: "nature",
+      label: "Nature & Parks",
+      icon: <Mountain className="h-5 w-5" />,
+      color: "bg-travel-forest",
+    },
+    {
+      id: "history",
+      label: "History & Culture",
+      icon: <Camera className="h-5 w-5" />,
+      color: "bg-travel-sand",
+    },
+    {
+      id: "adventure",
+      label: "Adventure Sports",
+      icon: <Plane className="h-5 w-5" />,
+      color: "bg-travel-ocean",
+    },
+    {
+      id: "relaxation",
+      label: "Relaxation",
+      icon: <Hotel className="h-5 w-5" />,
+      color: "bg-travel-sky",
+    },
+    {
+      id: "nightlife",
+      label: "Nightlife",
+      icon: <Sparkles className="h-5 w-5" />,
+      color: "bg-travel-sunset",
+    },
   ];
 
   const activities = [
-    "Museums & Galleries", "Food Tours", "Hiking & Trekking", "Water Sports",
-    "Photography", "Shopping", "Music & Festivals", "Wildlife Safari",
-    "City Walking Tours", "Beach Activities", "Mountain Climbing", "Spa & Wellness"
+    "Museums & Galleries",
+    "Food Tours",
+    "Hiking & Trekking",
+    "Water Sports",
+    "Photography",
+    "Shopping",
+    "Music & Festivals",
+    "Wildlife Safari",
+    "City Walking Tours",
+    "Beach Activities",
+    "Mountain Climbing",
+    "Spa & Wellness",
   ];
 
-  const accommodationTypes = ["Hotel", "Resort", "Apartment", "Hostel", "Villa", "Camping"];
+  const accommodationTypes = [
+    "Hotel",
+    "Resort",
+    "Apartment",
+    "Hostel",
+    "Villa",
+    "Camping",
+  ];
   const transportationTypes = ["Flight", "Train", "Car Rental", "Bus", "Mixed"];
 
   const handlePreferenceToggle = (prefId: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       preferences: prev.preferences.includes(prefId)
-        ? prev.preferences.filter(p => p !== prefId)
-        : [...prev.preferences, prefId]
+        ? prev.preferences.filter((p) => p !== prefId)
+        : [...prev.preferences, prefId],
     }));
   };
 
   const handleActivityToggle = (activity: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       activities: prev.activities.includes(activity)
-        ? prev.activities.filter(a => a !== activity)
-        : [...prev.activities, activity]
+        ? prev.activities.filter((a) => a !== activity)
+        : [...prev.activities, activity],
     }));
   };
 
@@ -112,7 +164,9 @@ export default function TripPlanner() {
   const generateItinerary = () => {
     // This would typically send data to backend for processing
     console.log("Generating itinerary with:", formData);
-    alert("🎉 Your personalized itinerary is being generated! You'll receive a PDF shortly.");
+    alert(
+      "🎉 Your personalized itinerary is being generated! You'll receive a PDF shortly.",
+    );
   };
 
   return (
@@ -129,7 +183,9 @@ export default function TripPlanner() {
             </span>
           </Link>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-600">Step {currentStep} of {totalSteps}</span>
+            <span className="text-sm text-gray-600">
+              Step {currentStep} of {totalSteps}
+            </span>
             <Button variant="outline" size="sm" asChild>
               <Link to="/">Back to Home</Link>
             </Button>
@@ -143,17 +199,27 @@ export default function TripPlanner() {
           <div className="flex items-center justify-between mb-4">
             {steps.map((step, index) => (
               <div key={step.number} className="flex items-center">
-                <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all ${
-                  currentStep >= step.number 
-                    ? 'bg-gradient-to-r from-travel-ocean to-travel-sunset border-travel-ocean text-white' 
-                    : 'border-gray-300 text-gray-400'
-                }`}>
-                  {currentStep > step.number ? <Check className="h-5 w-5" /> : step.number}
+                <div
+                  className={`flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all ${
+                    currentStep >= step.number
+                      ? "bg-gradient-to-r from-travel-ocean to-travel-sunset border-travel-ocean text-white"
+                      : "border-gray-300 text-gray-400"
+                  }`}
+                >
+                  {currentStep > step.number ? (
+                    <Check className="h-5 w-5" />
+                  ) : (
+                    step.number
+                  )}
                 </div>
                 {index < steps.length - 1 && (
-                  <div className={`w-full h-1 mx-4 rounded transition-all ${
-                    currentStep > step.number ? 'bg-gradient-to-r from-travel-ocean to-travel-sunset' : 'bg-gray-200'
-                  }`} />
+                  <div
+                    className={`w-full h-1 mx-4 rounded transition-all ${
+                      currentStep > step.number
+                        ? "bg-gradient-to-r from-travel-ocean to-travel-sunset"
+                        : "bg-gray-200"
+                    }`}
+                  />
                 )}
               </div>
             ))}
@@ -185,7 +251,10 @@ export default function TripPlanner() {
               {currentStep === 1 && (
                 <div className="space-y-6">
                   <div>
-                    <Label htmlFor="destination" className="text-lg font-medium mb-3 block">
+                    <Label
+                      htmlFor="destination"
+                      className="text-lg font-medium mb-3 block"
+                    >
                       Where would you like to go?
                     </Label>
                     <div className="relative">
@@ -194,21 +263,40 @@ export default function TripPlanner() {
                         id="destination"
                         placeholder="Enter city, country, or region..."
                         value={formData.destination}
-                        onChange={(e) => setFormData(prev => ({ ...prev, destination: e.target.value }))}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            destination: e.target.value,
+                          }))
+                        }
                         className="pl-10 h-12 text-lg border-travel-ocean/20 focus:border-travel-ocean"
                       />
                     </div>
                   </div>
-                  
+
                   <div className="bg-travel-sky/10 p-4 rounded-lg">
-                    <h4 className="font-medium text-gray-900 mb-2">Popular Destinations</h4>
+                    <h4 className="font-medium text-gray-900 mb-2">
+                      Popular Destinations
+                    </h4>
                     <div className="flex flex-wrap gap-2">
-                      {["Paris, France", "Tokyo, Japan", "Bali, Indonesia", "New York, USA", "Rome, Italy", "Barcelona, Spain"].map((dest) => (
-                        <Badge 
-                          key={dest} 
-                          variant="secondary" 
+                      {[
+                        "Paris, France",
+                        "Tokyo, Japan",
+                        "Bali, Indonesia",
+                        "New York, USA",
+                        "Rome, Italy",
+                        "Barcelona, Spain",
+                      ].map((dest) => (
+                        <Badge
+                          key={dest}
+                          variant="secondary"
                           className="cursor-pointer hover:bg-travel-ocean hover:text-white transition-all"
-                          onClick={() => setFormData(prev => ({ ...prev, destination: dest }))}
+                          onClick={() =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              destination: dest,
+                            }))
+                          }
                         >
                           {dest}
                         </Badge>
@@ -223,7 +311,10 @@ export default function TripPlanner() {
                 <div className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="startDate" className="text-lg font-medium mb-3 block">
+                      <Label
+                        htmlFor="startDate"
+                        className="text-lg font-medium mb-3 block"
+                      >
                         Departure Date
                       </Label>
                       <div className="relative">
@@ -232,14 +323,22 @@ export default function TripPlanner() {
                           id="startDate"
                           type="date"
                           value={formData.startDate}
-                          onChange={(e) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
+                          onChange={(e) =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              startDate: e.target.value,
+                            }))
+                          }
                           className="pl-10 h-12 border-travel-ocean/20 focus:border-travel-ocean"
                         />
                       </div>
                     </div>
-                    
+
                     <div>
-                      <Label htmlFor="endDate" className="text-lg font-medium mb-3 block">
+                      <Label
+                        htmlFor="endDate"
+                        className="text-lg font-medium mb-3 block"
+                      >
                         Return Date
                       </Label>
                       <div className="relative">
@@ -248,7 +347,12 @@ export default function TripPlanner() {
                           id="endDate"
                           type="date"
                           value={formData.endDate}
-                          onChange={(e) => setFormData(prev => ({ ...prev, endDate: e.target.value }))}
+                          onChange={(e) =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              endDate: e.target.value,
+                            }))
+                          }
                           className="pl-10 h-12 border-travel-ocean/20 focus:border-travel-ocean"
                         />
                       </div>
@@ -263,13 +367,20 @@ export default function TripPlanner() {
                       <Users className="h-5 w-5 text-travel-ocean" />
                       <Slider
                         value={[formData.travelers]}
-                        onValueChange={(value) => setFormData(prev => ({ ...prev, travelers: value[0] }))}
+                        onValueChange={(value) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            travelers: value[0],
+                          }))
+                        }
                         max={10}
                         min={1}
                         step={1}
                         className="flex-1"
                       />
-                      <span className="text-lg font-medium w-8">{formData.travelers}</span>
+                      <span className="text-lg font-medium w-8">
+                        {formData.travelers}
+                      </span>
                     </div>
                   </div>
 
@@ -281,13 +392,17 @@ export default function TripPlanner() {
                       <DollarSign className="h-5 w-5 text-travel-ocean" />
                       <Slider
                         value={formData.budget}
-                        onValueChange={(value) => setFormData(prev => ({ ...prev, budget: value }))}
+                        onValueChange={(value) =>
+                          setFormData((prev) => ({ ...prev, budget: value }))
+                        }
                         max={10000}
                         min={500}
                         step={250}
                         className="flex-1"
                       />
-                      <span className="text-lg font-medium w-20">${formData.budget[0].toLocaleString()}</span>
+                      <span className="text-lg font-medium w-20">
+                        ${formData.budget[0].toLocaleString()}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -307,14 +422,18 @@ export default function TripPlanner() {
                           onClick={() => handlePreferenceToggle(pref.id)}
                           className={`p-4 rounded-lg border-2 cursor-pointer transition-all text-center ${
                             formData.preferences.includes(pref.id)
-                              ? 'border-travel-ocean bg-travel-ocean/10'
-                              : 'border-gray-200 hover:border-travel-ocean/50'
+                              ? "border-travel-ocean bg-travel-ocean/10"
+                              : "border-gray-200 hover:border-travel-ocean/50"
                           }`}
                         >
-                          <div className={`mx-auto mb-2 p-2 rounded-full w-fit ${pref.color}/20`}>
+                          <div
+                            className={`mx-auto mb-2 p-2 rounded-full w-fit ${pref.color}/20`}
+                          >
                             {pref.icon}
                           </div>
-                          <div className="font-medium text-sm">{pref.label}</div>
+                          <div className="font-medium text-sm">
+                            {pref.label}
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -333,8 +452,17 @@ export default function TripPlanner() {
                       {accommodationTypes.map((type) => (
                         <Button
                           key={type}
-                          variant={formData.accommodation === type ? "default" : "outline"}
-                          onClick={() => setFormData(prev => ({ ...prev, accommodation: type }))}
+                          variant={
+                            formData.accommodation === type
+                              ? "default"
+                              : "outline"
+                          }
+                          onClick={() =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              accommodation: type,
+                            }))
+                          }
                           className="h-12"
                         >
                           {type}
@@ -351,8 +479,17 @@ export default function TripPlanner() {
                       {transportationTypes.map((type) => (
                         <Button
                           key={type}
-                          variant={formData.transportation === type ? "default" : "outline"}
-                          onClick={() => setFormData(prev => ({ ...prev, transportation: type }))}
+                          variant={
+                            formData.transportation === type
+                              ? "default"
+                              : "outline"
+                          }
+                          onClick={() =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              transportation: type,
+                            }))
+                          }
                           className="h-12"
                         >
                           {type}
@@ -369,7 +506,11 @@ export default function TripPlanner() {
                       {activities.map((activity) => (
                         <Badge
                           key={activity}
-                          variant={formData.activities.includes(activity) ? "default" : "secondary"}
+                          variant={
+                            formData.activities.includes(activity)
+                              ? "default"
+                              : "secondary"
+                          }
                           className="cursor-pointer transition-all"
                           onClick={() => handleActivityToggle(activity)}
                         >
@@ -380,14 +521,22 @@ export default function TripPlanner() {
                   </div>
 
                   <div>
-                    <Label htmlFor="specialRequests" className="text-lg font-medium mb-3 block">
+                    <Label
+                      htmlFor="specialRequests"
+                      className="text-lg font-medium mb-3 block"
+                    >
                       Special Requests or Notes
                     </Label>
                     <Textarea
                       id="specialRequests"
                       placeholder="Any special requirements, dietary restrictions, accessibility needs, or specific requests..."
                       value={formData.specialRequests}
-                      onChange={(e) => setFormData(prev => ({ ...prev, specialRequests: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          specialRequests: e.target.value,
+                        }))
+                      }
                       className="min-h-[100px] border-travel-ocean/20 focus:border-travel-ocean"
                     />
                   </div>
@@ -398,26 +547,33 @@ export default function TripPlanner() {
               {currentStep === 5 && (
                 <div className="space-y-6">
                   <div className="bg-travel-sky/10 p-6 rounded-lg">
-                    <h3 className="text-xl font-bold mb-4 text-gray-900">Trip Summary</h3>
-                    
+                    <h3 className="text-xl font-bold mb-4 text-gray-900">
+                      Trip Summary
+                    </h3>
+
                     <div className="grid md:grid-cols-2 gap-4 text-sm">
                       <div>
-                        <strong>Destination:</strong> {formData.destination || "Not specified"}
+                        <strong>Destination:</strong>{" "}
+                        {formData.destination || "Not specified"}
                       </div>
                       <div>
-                        <strong>Dates:</strong> {formData.startDate} to {formData.endDate}
+                        <strong>Dates:</strong> {formData.startDate} to{" "}
+                        {formData.endDate}
                       </div>
                       <div>
                         <strong>Travelers:</strong> {formData.travelers} people
                       </div>
                       <div>
-                        <strong>Budget:</strong> ${formData.budget[0].toLocaleString()}
+                        <strong>Budget:</strong> $
+                        {formData.budget[0].toLocaleString()}
                       </div>
                       <div>
-                        <strong>Accommodation:</strong> {formData.accommodation || "Not specified"}
+                        <strong>Accommodation:</strong>{" "}
+                        {formData.accommodation || "Not specified"}
                       </div>
                       <div>
-                        <strong>Transportation:</strong> {formData.transportation || "Not specified"}
+                        <strong>Transportation:</strong>{" "}
+                        {formData.transportation || "Not specified"}
                       </div>
                     </div>
 
@@ -426,9 +582,15 @@ export default function TripPlanner() {
                         <strong>Interests:</strong>
                         <div className="flex flex-wrap gap-1 mt-1">
                           {formData.preferences.map((prefId) => {
-                            const pref = preferences.find(p => p.id === prefId);
+                            const pref = preferences.find(
+                              (p) => p.id === prefId,
+                            );
                             return pref ? (
-                              <Badge key={prefId} variant="secondary" className="text-xs">
+                              <Badge
+                                key={prefId}
+                                variant="secondary"
+                                className="text-xs"
+                              >
                                 {pref.label}
                               </Badge>
                             ) : null;
@@ -442,7 +604,11 @@ export default function TripPlanner() {
                         <strong>Activities:</strong>
                         <div className="flex flex-wrap gap-1 mt-1">
                           {formData.activities.slice(0, 5).map((activity) => (
-                            <Badge key={activity} variant="secondary" className="text-xs">
+                            <Badge
+                              key={activity}
+                              variant="secondary"
+                              className="text-xs"
+                            >
                               {activity}
                             </Badge>
                           ))}
@@ -458,10 +624,13 @@ export default function TripPlanner() {
 
                   <div className="text-center p-6 bg-gradient-to-r from-travel-ocean to-travel-sunset rounded-lg text-white">
                     <Sparkles className="h-12 w-12 mx-auto mb-4" />
-                    <h3 className="text-xl font-bold mb-2">Ready to Generate Your Perfect Itinerary?</h3>
+                    <h3 className="text-xl font-bold mb-2">
+                      Ready to Generate Your Perfect Itinerary?
+                    </h3>
                     <p className="opacity-90">
-                      Our AI will create a personalized travel plan with detailed recommendations, 
-                      schedules, and local insights - all available as a downloadable PDF.
+                      Our AI will create a personalized travel plan with
+                      detailed recommendations, schedules, and local insights -
+                      all available as a downloadable PDF.
                     </p>
                   </div>
                 </div>
